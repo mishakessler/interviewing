@@ -1,4 +1,4 @@
-# whiteboarding# Technical & Behavioral Interview Questions for SEI Students <!-- omit in toc -->
+# Technical & Behavioral Interview Questions for SEI Students <!-- omit in toc -->
 
 Compiled here are the technical and behavioral interview questions shared throughout generations of cohorts. Questions are organized by category (technical versus behavioral) and type (whiteboarding challenges, knowledge checks, etc.) Each question is given with the relevant answers– for whiteboarding challenges, this includes Starter Code, Questions (for the interviewer), Pseudocode, Brute-Force Solutions, and finally, the Refactored Solutions, where possible; for knowledge checks and behavioral questions, this includes Key Talking Points and Conversational Examples, where possible.
 
