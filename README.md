@@ -1,30 +1,42 @@
 # Technical & Behavioral Interview Questions for SEI Students <!-- omit in toc -->
 
-Compiled here are the technical and behavioral interview questions shared throughout generations of cohorts. Questions are organized by category (technical versus behavioral) and type (whiteboarding challenges, knowledge checks, etc.) Each question is given with the relevant answers– for whiteboarding challenges, this includes Starter Code, Questions (for the interviewer), Pseudocode, Brute-Force Solutions, and finally, the Refactored Solutions, where possible; for knowledge checks and behavioral questions, this includes Key Talking Points and Conversational Examples, where possible.
+Compiled here are the technical and behavioral interview questions shared throughout generations of cohorts.
 
-_(I've also used dropdowns for as clean a `README.md` as possible; if you add to this document, I'd encourage you to do so as well.)_
+Questions are organized by category (technical versus behavioral) and type (whiteboarding challenges, knowledge checks, etc.) Each question is given with the relevant answers– for whiteboarding challenges, this includes Starter Code, Questions (for the interviewer), Pseudocode, Brute-Force Solutions, and finally, the Refactored Solutions, where possible; for knowledge checks and behavioral questions, this includes Key Talking Points and Conversational Examples, where possible.
+
+<br>
 
 ***
 
 ## Table of Contents <!-- omit in toc -->
-- [README Overview](#README-Overview)
+- [Contributor Overview](#Contributor-Overview)
 - [Chosen Questions](#Chosen-Questions)
 - [Technical Interviews](#Technical-Interviews)
   - [Whiteboarding Challenges](#Whiteboarding-Challenges)
     - [Anagrams](#Anagrams)
-    - [changeToAnagrams](#changeToAnagrams)
+    - [Change To Anagrams](#Change-To-Anagrams)
+    - [Hungry Bunny](#Hungry-Bunny)
     - [Palindrome](#Palindrome)
     - [Palindrome Date](#Palindrome-Date)
   - [Knowledge Checks](#Knowledge-Checks)
+    - [Closures](#Closures)
 - [Behavioral Interviews](#Behavioral-Interviews)
 
 <br>
 
 ***
 
-## README Overview
+## Contributor Overview
 
-The whiteboarding challenges are built around the following template:
+Want to contribute by adding to the document? Click expand for some helpful templates.
+
+<details>
+
+<summary>Expand</summary>
+
+I've used dropdowns for as clean a `README.md` as possible; if you add to this document, I'd encourage you to do so as well, using the following templates:
+
+Whiteboarding challenges are built around the following template:
 
 ```md
 #### The Question Name is an H4.
@@ -82,7 +94,7 @@ The whiteboarding challenges are built around the following template:
 
 <br>
 
-While the knowledge checks are built as such:
+Knowledge checks are built around the following template:
 
 ```md
 #### A Question Keyword is an H4.
@@ -105,6 +117,7 @@ While the knowledge checks are built as such:
 
 </details>
 ```
+</details>
 
 <br>
 
@@ -117,7 +130,7 @@ Once you, the instructors, decide on the questions you want to ask, **please do 
 Cheetahs Whiteboarding:
 
 1. [Date Palindrome](#Palindrome-Date)
-2. [Carrots]()
+2. [Hungry Bunny]()
 
 Cheetahs Knowledge Checks:
 
@@ -250,10 +263,16 @@ console.log(refactoredAnagram("the litttttle one", "the litttle one"));
 ```
 
 </details>
+
+<details style="margin-left: 50px"><summary>Variations</summary>
+
+[Change To Anagrams](#Change-To-Anagrams)
+
+</details>
 </details>
 <br>
 
-#### changeToAnagrams
+#### Change To Anagrams
 
 <details><summary>Expand</summary>
 
@@ -304,6 +323,193 @@ function changeToAnagram() {
   return removed;
 }
 ```
+</details>
+</details>
+<br>
+
+#### Hungry Bunny
+
+<details><summary>Expand</summary>
+
+> A very hungry bunny gets into your garden, which is represented by a rectangular, 2D array matrix. For example:
+> ```
+> [
+>  [5, 7, 8, 6, 3],
+>  [0, 0, 7, 0, 4],
+>  [4, 6, 3, 4, 9],
+>  [3, 1, 0, 5, 8],
+>  [2, 5, 1, 0, 2]
+> ]
+> ```
+> The bunny begins to eat the most amount of carrots it can! Calculate how many carrots the bunny will eat if it starts at the center plot and moves up, down, left, or right, only choosing the plot that has the **most** carrots. If there are no carrots left on any adjacent squares, the rabbit will go to sleep.
+> Given the above input, your function should return `30` by starting at `3` then moving to `7`, `8`, `7`, `5`.
+
+<details style="margin-left: 50px">
+
+  <summary>Starter Code</summary>
+
+  ```js
+  goBunnyGo = (garden, x, y) => {
+
+  }
+  ```
+
+</details>
+
+<details style="margin-left: 50px">
+
+  <summary>Clarifying Questions</summary>
+
+  - Will the garden always have an exact center plot? If not, which plot is the first?
+  - Will the bunny ever need to choose between two plots with an identical number of carrots?
+
+</details>
+
+<details style="margin-left: 50px">
+
+  <summary>Pseudocode</summary>
+
+- So I'm going to get an array of arrays that I'm given as an argument, and to start, I'll need to find the middle integer, given the 2D matrix that those arrays create, and initialize a carrot counter as that integer.
+- Then, I'll need to compare the adjacent squares, excluding diagonally-adjacent squares, to determine which has the highest integer. I'll add that integer to the carrot counter and repeat.
+- When the index reaches a square with no adjacent non-zero integers, I have to return to the total number of carrots, tracked by my counter.
+- I'll want to prevent the bunny from going over the same plots multiple times, which means I'll not just have to add to the carrot counter, but I'll want to replace the plot's integer with a 0 when it is eaten.
+- I'll also want to prevent the bunny from moving into non-existant plots, which means I need to prevent the bunny from moving into a plot with an index greater than the array lengths.
+
+</details>
+
+<details style="margin-left: 50px">
+
+  <summary>Brute Force Code</summary>
+
+</details>
+
+<details style="margin-left: 50px">
+
+  <summary>Refactored Code</summary>
+
+```js
+function goBunnyGo(garden, x, y){
+  let carrotCount = garden[x][y];
+  garden[x][y] = 0
+  let sleepyRabbit = false
+  do {
+    let right = -1
+    let left = -1
+    let up = -1
+    let down = -1
+    if ((garden[x+1])!== undefined){
+      right = garden[x+1][y]
+    }
+    if ((garden[x-1])!== undefined){
+      left = garden[x-1][y]
+    }
+    if ((garden[x][y-1])!== undefined){
+      up = garden[x][y-1]
+    }
+    if ((garden[x][y+1])!== undefined){
+      down = garden[x][y+1]
+    }
+      if (right > left && right > up && right> down){
+      carrotCount += right
+      right = 0
+      x++
+      garden[x][y] =0
+      }
+      else if (left > right && left  > up && left > down){
+      carrotCount += left 
+      x--
+      garden[x][y] =0
+      }
+      else if (up > left && up > right && up> down){
+      carrotCount += up
+      y--
+      garden[x][y] =0
+      }
+      else if (down > left && down > up && down> right){
+        console.log('down', down)
+      carrotCount += down
+      y++
+      garden[x][y] =0
+      }
+      else {
+        return carrotCount
+      }
+  } while (!sleepyRabbit)
+  return carrotCount
+}
+
+function findCenter(garden){
+  const length = garden.length;
+  const depth = garden[0].length;
+  if (length%2 === 1 && depth%2 === 1) {
+    const x = Math.floor(length / 2);
+    const y = Math.floor(depth / 2);
+  } else {
+    let x = length/2
+    let y = depth /2
+  }
+    let midArray = []
+    let center = garden[x][y]
+    let left = -1
+    let up = -1
+    let diag = -1
+    if ((garden[x-1])!== undefined){
+      left = garden[x-1][y]
+    }
+    if ((garden[x][y-1])!== undefined){
+      up = garden[x][y-1]
+    }
+    if ((garden[x-1][y-1])!== undefined){
+      diag = garden[x-1][y-1]
+    }
+      console.log('garden', garden)
+      console.log('up', up)
+      console.log('left', left)
+    console.log('diag', diag)
+      if (center > up &&center > left && center > diag ) {
+        midArray.push(x)
+        midArray.push(y)
+        console.log('midArray', midArray)
+        return midArray
+      }
+     else if (left > up  && left > diag){
+      midArray.push(x-1)
+      midArray.push(y)
+      console.log('midArray', midArray)
+      return midArray
+      }
+      else if (up > left && up > diag){
+       midArray.push(x)
+      midArray.push(y-1)
+      console.log('midArray', midArray)
+      return midArray
+      }
+      else if (diag > left && diag > up){
+         midArray.push(x-1)
+      midArray.push(y-1)
+      console.log('midArray', midArray)
+      return midArray
+      }
+    }
+  }
+
+const garden = [
+  [1, 2, 4, 3],
+  [6, 3, 8, 1],
+  [3, 15, 6, 2],
+  [4, 7, 8, 1]
+];
+
+const coord = findCenter(garden)
+goBunnyGo(garden, coord[0], coord[1])
+
+```
+
+</details>
+
+<details style="margin-left: 50px">
+
+  <summary>Testing</summary>
 
 </details>
 </details>
@@ -394,7 +600,7 @@ function changeToAnagram() {
 
 <details><summary>Expand</summary>
 
-> Determine if a _date_ is a Palindrome.
+> February 20, 2020, (your graduation!) is a _date_ Palindrome. In fact, it's one of the only dates that is a palindrome across every global date format, such as MM-DD-YYYY, DD-MM-YYYY, etc.
 
 <details style="margin-left: 50px">
 
@@ -411,8 +617,6 @@ function changeToAnagram() {
 <details style="margin-left: 50px">
 
   <summary>Clarifying Questions</summary>
-
-  
 
 </details>
 
@@ -445,27 +649,37 @@ function changeToAnagram() {
 <br>
 <br>
 
+
+***
+
 ### Knowledge Checks
 
->
+#### Closures
+
+<details><summary>Expand</summary>
+
+> What is a function closure?
+
+<details style="margin-left: 50px">
+
+<summary>Key Points</summary>
+
+</details>
+</details>
+
+<br>
+<br>
+<br>
 
 ***
 
 ## Behavioral Interviews
 
-
-
 <br>
 <br>
 <br>
 
 ***
-
-Date Palindrome
-
-Carrot
-
-What’s a closure?
 
 Explain the React Lifecycle.
 
@@ -540,9 +754,9 @@ What does it mean to clone a repository?
 4. What is `upstream` in your local copy of repository? Can it be `timon`?
 5. What is Doctype and is it mandatory?
 6. What is the difference between Git and GitHub?
-8. What is a block level element?  Name one.
-9. How do you make two block level elements appear inline in the browser?
-10. What do you think would be the result of the following css rule? a { text-decoration:none;}?
+7. What is a block level element?  Name one.
+8. How do you make two block level elements appear inline in the browser?
+9.  What do you think would be the result of the following css rule? a { text-decoration:none;}?
 11. What is `git status` used for?
 12. What are the advantages of using GIT?
 13. What is HTML Anchor element? Provide an example.
