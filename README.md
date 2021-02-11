@@ -1,7 +1,5 @@
 # Technical & Behavioral Interview Questions for SEI Students <!-- omit in toc -->
 
-Compiled here are the technical and behavioral interview questions shared throughout generations of cohorts.
-
 Questions are organized by category (technical versus behavioral) and type (whiteboarding challenges, knowledge checks, etc.) Each question is given with the relevant answers– for whiteboarding challenges, this includes Starter Code, Questions (for the interviewer), Pseudocode, Brute-Force Solutions, and finally, the Refactored Solutions, where possible; for knowledge checks and behavioral questions, this includes Key Talking Points and Conversational Examples, where possible.
 
 <br>
@@ -9,18 +7,18 @@ Questions are organized by category (technical versus behavioral) and type (whit
 ***
 
 ## Table of Contents <!-- omit in toc -->
-- [Contributor Overview](#Contributor-Overview)
-- [Chosen Questions](#Chosen-Questions)
-- [Technical Interviews](#Technical-Interviews)
-  - [Whiteboarding Challenges](#Whiteboarding-Challenges)
-    - [Anagrams](#Anagrams)
-    - [Change To Anagrams](#Change-To-Anagrams)
-    - [Hungry Bunny](#Hungry-Bunny)
-    - [Palindrome](#Palindrome)
-    - [Palindrome Date](#Palindrome-Date)
-  - [Knowledge Checks](#Knowledge-Checks)
-    - [Closures](#Closures)
-- [Behavioral Interviews](#Behavioral-Interviews)
+- [Contributor Overview](#contributor-overview)
+- [Chosen Questions](#chosen-questions)
+- [Technical Interviews](#technical-interviews)
+  - [Whiteboarding Challenges](#whiteboarding-challenges)
+    - [Anagrams](#anagrams)
+    - [Change To Anagrams](#change-to-anagrams)
+    - [Hungry Bunny](#hungry-bunny)
+    - [Palindrome](#palindrome)
+    - [Palindrome Date](#palindrome-date)
+  - [Knowledge Checks](#knowledge-checks)
+    - [Closures](#closures)
+- [Behavioral Interviews](#behavioral-interviews)
 
 <br>
 
